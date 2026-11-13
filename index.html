@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="app">
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-icon">₹</span>
+        <span>MoneyMate</span>
+      </div>
+
+      <div class="profile">
+        <span class="status-dot"></span>
+        <span>My Wallet</span>
+      </div>
+    </header>
+
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">YOUR FINANCIAL OVERVIEW</p>
+        <h1>Expense Tracker</h1>
+        <p class="muted">Manage your money. Reach your goals.</p>
+      </div>
+
+      <button class="primary-btn" id="addBtn">
+        <span>＋</span> Add Transaction
+      </button>
+    </section>
+
+    <section class="summary-grid">
+
+      <article class="balance-card">
+        <div class="card-heading">
+          <span>Total Balance</span>
+          <span class="balance-icon">₹</span>
+        </div>
+
+        <h2 id="balance">₹0.00</h2>
+
+        <div class="balance-bottom">
+          <div>
+            <span class="small-label">Income</span>
+            <h3 id="balanceIncome">₹0.00</h3>
+          </div>
+          <div>
+            <span class="small-label">Expenses</span>
+            <h3 id="balanceExpense">₹0.00</h3>
+          </div>
+        </div>
+      </article>
+
+      <article class="summary-card income-card">
+        <div class="summary-icon">↙</div>
+        <p>Total Income</p>
+        <h2 id="income">₹0.00</h2>
+        <span class="summary-note">Money received</span>
+      </article>
+
+      <article class="summary-card expense-card">
+        <div class="summary-icon">↗</div>
+        <p>Total Expenses</p>
+        <h2 id="expenses">₹0.00</h2>
+        <span class="summary-note">Money spent</span>
+      </article>
+
+    </section>
+
+    <section class="content-grid">
+
+      <article class="panel transactions-panel">
+        <div class="section-heading">
+          <div>
+            <h2>Transactions</h2>
+            <p class="muted">Your recent money activity</p>
+          </div>
+
+          <select id="filter">
+            <option value="all">All</option>
+            <option value="income">Income</option>
+            <option value="expense">Expenses</option>
+          </select>
+        </div>
+
+        <div class="transaction-list" id="transactionList"></div>
+
+        <p class="empty-message" id="emptyMessage">
+          No transactions yet. Add your first transaction!
+        </p>
+      </article>
+
+      <article class="panel chart-panel">
+        <div class="section-heading">
+          <div>
+            <h2>Statistics</h2>
+            <p class="muted">Income vs expenses</p>
+          </div>
+          <span class="chart-badge">Weekly</span>
+        </div>
+
+        <div class="chart-legend">
+          <span><i class="legend-income"></i> Income</span>
+          <span><i class="legend-expense"></i> Expenses</span>
+        </div>
+
+        <div class="chart" id="chart">
+          <div class="chart-gridlines">
+            <span>₹4k</span>
+            <span>₹3k</span>
+            <span>₹2k</span>
+            <span>₹1k</span>
+            <span>₹0</span>
+          </div>
+
+          <div class="chart-bars" id="chartBars"></div>
+        </div>
+
+        <div class="chart-summary">
+          <div>
+            <span class="muted">Transactions</span>
+            <h3 id="transactionCount">0</h3>
+          </div>
+          <div>
+            <span class="muted">Savings rate</span>
+            <h3 id="savingsRate">0%</h3>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <footer>
+      <span>© 2026 MoneyMate</span>
+      <span>Small steps. Better savings.</span>
+    </footer>
+
+  </main>
+
+  <!-- Add Transaction Modal -->
+  <div class="modal-overlay" id="modal">
+    <form class="modal" id="transactionForm">
+      <div class="modal-heading">
+        <div>
+          <h2>Add Transaction</h2>
+          <p class="muted">Record your money activity</p>
+        </div>
+        <button type="button" class="close-btn" id="closeBtn"
+          aria-label="Close">✕</button>
+      </div>
+
+      <label for="title">Transaction name</label>
+      <input id="title" type="text" placeholder="e.g. Shopping"
+        maxlength="60" required>
+
+      <label for="amount">Amount (₹)</label>
+      <input id="amount" type="number" placeholder="e.g. 500"
+        min="0.01" max="1000000000" step="0.01" required>
+
+      <label for="type">Transaction type</label>
+      <select id="type" required>
+        <option value="expense">Expense</option>
+        <option value="income">Income</option>
+      </select>
+
+      <label for="category">Category</label>
+      <select id="category" required>
+        <option value="Food">Food</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Transport">Transport</option>
+        <option value="Bills">Bills</option>
+        <option value="Salary">Salary</option>
+        <option value="Freelance">Freelance</option>
+        <option value="Education">Education</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="date">Date</label>
+      <input id="date" type="date" required>
+
+      <button type="submit" class="primary-btn submit-btn">
+        Save Transaction
+      </button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>s
